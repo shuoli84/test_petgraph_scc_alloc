@@ -4,22 +4,25 @@ use petgraph::{prelude::NodeIndex, Graph};
 #[global_allocator]
 static A: AllocCounterSystem = AllocCounterSystem;
 
-type TestGraph = Graph<&'static str, f64>;
+type TestGraph = Graph<usize, u8>;
 
-fn test_graph() -> TestGraph {
+fn test_graph(n: usize) -> TestGraph {
     use petgraph::prelude::*;
 
     let mut gr = Graph::new();
-    let h = gr.add_node("H");
-    let i = gr.add_node("I");
-    let j = gr.add_node("J");
-    let k = gr.add_node("K");
-    // Z is disconnected.
-    let _ = gr.add_node("Z");
-    gr.add_edge(h, i, 1.);
-    gr.add_edge(h, j, 3.);
-    gr.add_edge(i, j, 1.);
-    gr.add_edge(i, k, 2.);
+    let mut indexes = vec![];
+
+    // add test nodes
+    for i in 0..n {
+        indexes.push(gr.add_node(i));
+    }
+
+    // create a snake shape graph
+    for w in indexes.windows(2) {
+        let from = &w[0];
+        let to = &w[1];
+        gr.add_edge(*from, *to, 1);
+    }
 
     gr
 }
@@ -29,7 +32,6 @@ fn tj_scc(gr: &TestGraph) -> Vec<NodeIndex> {
 
     let sccs = tarjan_scc(gr);
     let nodes = sccs.into_iter().flatten().rev().collect::<Vec<_>>();
-    assert_eq!(nodes.len(), 5);
     nodes
 }
 
@@ -43,17 +45,59 @@ fn scc_iter(graph: &TestGraph) -> Vec<NodeIndex> {
 
     nodes.reverse();
 
-    assert_eq!(nodes.len(), 5);
     nodes
 }
 
+fn empty_system() {}
+
+fn test_bevy_main(graph_size: usize) {
+    use bevy_ecs_main::prelude::*;
+
+    let mut world = World::new();
+    let mut schedule = Schedule::new();
+
+    for _ in 0..graph_size {
+        schedule.add_system(empty_system);
+    }
+
+    schedule.run(&mut world);
+}
+
+fn test_bevy_optimized(graph_size: usize) {
+    use bevy_ecs_shuo::prelude::*;
+
+    let mut world = World::new();
+    let mut schedule = Schedule::new();
+
+    for _ in 0..graph_size {
+        schedule.add_system(empty_system);
+    }
+
+    schedule.run(&mut world);
+}
+
 fn main() {
-    let test_graph = test_graph();
+    for i in 0..10 {
+        let n = i * 100;
+        println!("testing node count: {n}");
+        let test_graph = test_graph(n);
 
-    let (tj_scc_counts, tj_scc_result) = count_alloc(|| tj_scc(&test_graph));
-    let (iter_scc_counts, iter_scc_result) = count_alloc(|| scc_iter(&test_graph));
+        let (tj_scc_counts, tj_scc_result) = count_alloc(|| tj_scc(&test_graph));
+        let (iter_scc_counts, iter_scc_result) = count_alloc(|| scc_iter(&test_graph));
 
-    assert_eq!(tj_scc_result, iter_scc_result);
-    println!("tj_scc alloc count: {tj_scc_counts:?}");
-    println!("iter_scc_counts alloc count: {iter_scc_counts:?}");
+        assert_eq!(tj_scc_result, iter_scc_result);
+        println!("  tj_scc alloc count: {tj_scc_counts:?}");
+        println!("  iter_scc_counts alloc count: {iter_scc_counts:?}");
+    }
+
+    for i in 0..10 {
+        let n = i * 100;
+        println!("testing bevy graph count: {n}");
+
+        let (main_alloc_counts, _) = count_alloc(|| test_bevy_main(n));
+        let (optimized_alloc_counts, _) = count_alloc(|| test_bevy_optimized(n));
+
+        println!("  bevy_main alloc count: {main_alloc_counts:?}");
+        println!("  bevy_optimized count: {optimized_alloc_counts:?}");
+    }
 }

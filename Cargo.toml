@@ -8,3 +8,5 @@ edition = "2021"
 [dependencies]
 petgraph = "0.6"
 alloc_counter = "0.0.4"
+bevy_ecs_main = { package = "bevy_ecs", git = "https://github.com/bevyengine/bevy" }
+bevy_ecs_shuo = { package = "bevy_ecs", git = "https://github.com/shuoli84/bevy", branch = "schedule_topsort_optimize" }
