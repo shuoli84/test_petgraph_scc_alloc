@@ -84,7 +84,7 @@ checksum = "d468802bab17cbc0cc575e9b053f41e72aa36bfa6b7f55e3529ffa43161b97fa"
 [[package]]
 name = "bevy_ecs"
 version = "0.9.0"
-source = "git+https://github.com/shuoli84/bevy?branch=schedule_topsort_optimize#9befeab11356069756ea0c097b346bc94d63fe77"
+source = "git+https://github.com/shuoli84/bevy?branch=schedule_topsort_optimize#3d5729e5210fc6650bfc768c8c8ef7d5f8a93844"
 dependencies = [
  "async-channel",
  "bevy_ecs_macros 0.9.0 (git+https://github.com/shuoli84/bevy?branch=schedule_topsort_optimize)",
@@ -122,7 +122,7 @@ dependencies = [
 [[package]]
 name = "bevy_ecs_macros"
 version = "0.9.0"
-source = "git+https://github.com/shuoli84/bevy?branch=schedule_topsort_optimize#9befeab11356069756ea0c097b346bc94d63fe77"
+source = "git+https://github.com/shuoli84/bevy?branch=schedule_topsort_optimize#3d5729e5210fc6650bfc768c8c8ef7d5f8a93844"
 dependencies = [
  "bevy_macro_utils 0.9.0 (git+https://github.com/shuoli84/bevy?branch=schedule_topsort_optimize)",
  "proc-macro2",
@@ -144,7 +144,7 @@ dependencies = [
 [[package]]
 name = "bevy_macro_utils"
 version = "0.9.0"
-source = "git+https://github.com/shuoli84/bevy?branch=schedule_topsort_optimize#9befeab11356069756ea0c097b346bc94d63fe77"
+source = "git+https://github.com/shuoli84/bevy?branch=schedule_topsort_optimize#3d5729e5210fc6650bfc768c8c8ef7d5f8a93844"
 dependencies = [
  "quote",
  "syn",
@@ -164,7 +164,7 @@ dependencies = [
 [[package]]
 name = "bevy_ptr"
 version = "0.9.0"
-source = "git+https://github.com/shuoli84/bevy?branch=schedule_topsort_optimize#9befeab11356069756ea0c097b346bc94d63fe77"
+source = "git+https://github.com/shuoli84/bevy?branch=schedule_topsort_optimize#3d5729e5210fc6650bfc768c8c8ef7d5f8a93844"
 
 [[package]]
 name = "bevy_ptr"
@@ -174,7 +174,7 @@ source = "git+https://github.com/bevyengine/bevy#b2e1694c12cd8fd4e679d85fda76a8f
 [[package]]
 name = "bevy_reflect"
 version = "0.9.0"
-source = "git+https://github.com/shuoli84/bevy?branch=schedule_topsort_optimize#9befeab11356069756ea0c097b346bc94d63fe77"
+source = "git+https://github.com/shuoli84/bevy?branch=schedule_topsort_optimize#3d5729e5210fc6650bfc768c8c8ef7d5f8a93844"
 dependencies = [
  "bevy_ptr 0.9.0 (git+https://github.com/shuoli84/bevy?branch=schedule_topsort_optimize)",
  "bevy_reflect_derive 0.9.0 (git+https://github.com/shuoli84/bevy?branch=schedule_topsort_optimize)",
@@ -206,7 +206,7 @@ dependencies = [
 [[package]]
 name = "bevy_reflect_derive"
 version = "0.9.0"
-source = "git+https://github.com/shuoli84/bevy?branch=schedule_topsort_optimize#9befeab11356069756ea0c097b346bc94d63fe77"
+source = "git+https://github.com/shuoli84/bevy?branch=schedule_topsort_optimize#3d5729e5210fc6650bfc768c8c8ef7d5f8a93844"
 dependencies = [
  "bevy_macro_utils 0.9.0 (git+https://github.com/shuoli84/bevy?branch=schedule_topsort_optimize)",
  "bit-set",
@@ -232,7 +232,7 @@ dependencies = [
 [[package]]
 name = "bevy_tasks"
 version = "0.9.0"
-source = "git+https://github.com/shuoli84/bevy?branch=schedule_topsort_optimize#9befeab11356069756ea0c097b346bc94d63fe77"
+source = "git+https://github.com/shuoli84/bevy?branch=schedule_topsort_optimize#3d5729e5210fc6650bfc768c8c8ef7d5f8a93844"
 dependencies = [
  "async-channel",
  "async-executor",
@@ -260,7 +260,7 @@ dependencies = [
 [[package]]
 name = "bevy_utils"
 version = "0.9.0"
-source = "git+https://github.com/shuoli84/bevy?branch=schedule_topsort_optimize#9befeab11356069756ea0c097b346bc94d63fe77"
+source = "git+https://github.com/shuoli84/bevy?branch=schedule_topsort_optimize#3d5729e5210fc6650bfc768c8c8ef7d5f8a93844"
 dependencies = [
  "ahash",
  "bevy_utils_proc_macros 0.9.0 (git+https://github.com/shuoli84/bevy?branch=schedule_topsort_optimize)",
@@ -292,7 +292,7 @@ dependencies = [
 [[package]]
 name = "bevy_utils_proc_macros"
 version = "0.9.0"
-source = "git+https://github.com/shuoli84/bevy?branch=schedule_topsort_optimize#9befeab11356069756ea0c097b346bc94d63fe77"
+source = "git+https://github.com/shuoli84/bevy?branch=schedule_topsort_optimize#3d5729e5210fc6650bfc768c8c8ef7d5f8a93844"
 dependencies = [
  "proc-macro2",
  "quote",
